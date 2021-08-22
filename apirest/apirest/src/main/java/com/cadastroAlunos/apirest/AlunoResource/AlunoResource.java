@@ -41,12 +41,13 @@ public class AlunoResource {
 	
 	}
 	@DeleteMapping("/alunos/{id}")
-	public void deletaAluno(@PathVariable(value="id")long id) {
+	public String deletaAluno(@PathVariable(value="id")long id) {
 		Aluno verificaAluno = listaAluno(id);
 		if(verificaAluno == null) {
-			System.out.print("Aluno não existe");
+			return "Aluno não existe";
 		}else {
 		 alunoRepository.deleteById(id);
+		 return "Alundo deletado";
 		}
 	}
 	@PutMapping("/alunos")
